@@ -1,7 +1,7 @@
 ---
 ---
 <div class="paper-entry">
-  <div id="{{ entry.key }}" class="paper-body">
+  <div id="{{ entry.key }}" class="paper-body" data-year="{{ entry.display_year | default: entry.year }}">
     <h3 class="title">{{ entry.title }}</h3>
     <!-- Author -->
     <div class="author">
@@ -107,14 +107,10 @@
     <div class="paper-meta">
       {% if entry.year == 'Preprints' %}
         <span class="venue-badge venue-preprint">arXiv preprint</span>
-        {% if entry.display_year -%}
-          <span class="paper-year">{{ entry.display_year }}</span>
-        {%- endif %}
       {% else %}
         {% assign venue_name = entry.abbr | split: "'" | first %}
         {% assign venue_full = entry.journal | default: entry.booktitle | default: entry.school %}
         <span class="venue-badge" title="{{ venue_full | escape }}">{{ venue_name | default: venue_full }}</span>
-        <span class="paper-year">{{ entry.year }}</span>
       {% endif %}
       {% if entry.additional_info -%}
         <span class="paper-note">{{ entry.additional_info }}</span>

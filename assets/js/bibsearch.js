@@ -7,10 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.getElementById("bibsearch-status");
   const empty = document.getElementById("bibsearch-empty");
   const normalize = (value) => value.normalize("NFKC").toLocaleLowerCase().replace(/\s+/g, " ").trim();
-  const searchable = entries.map((element) => ({
-    element,
-    text: normalize(element.querySelector(".paper-body")?.textContent || element.textContent),
-  }));
+  const searchable = entries.map((element) => {
+    const paper = element.querySelector(".paper-body");
+    return {
+      element,
+      text: normalize([paper?.textContent || element.textContent, paper?.dataset.year || ""].join(" ")),
+    };
+  });
 
   const filterItems = () => {
     const terms = normalize(input.value).split(" ").filter(Boolean);
