@@ -1,6 +1,15 @@
 function determineGiscusTheme() {
   
-    return "light";
+    let theme =
+      localStorage.getItem("theme") ||
+      document.documentElement.getAttribute("data-theme") ||
+      "system";
+
+    if (theme === "dark") return "dark";
+    if (theme === "light") return "light";
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
   
 }
 
@@ -9,7 +18,7 @@ function determineGiscusTheme() {
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
-    "data-repo": "327aem/327aem.github.io",
+    "data-repo": "junyoungkim0823/junyoungkim0823.github.io",
     "data-repo-id": "",
     "data-category": "Comments",
     "data-category-id": "",
