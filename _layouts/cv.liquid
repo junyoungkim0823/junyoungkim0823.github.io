@@ -17,7 +17,8 @@ layout: default
   <header class="post-header">
     <h1 class="post-title">
       {{ page.title }}
-      {% if page.cv_pdf %}
+      {% capture cv_pdf_exists %}{% file_exists {{ page.cv_pdf }} %}{% endcapture %}
+      {% if page.cv_pdf and cv_pdf_exists == 'true' or page.cv_pdf contains '://' %}
         <a
           {% if page.cv_pdf contains '://' %}
             href="{{ page.cv_pdf }}"
@@ -27,6 +28,7 @@ layout: default
           target="_blank"
           rel="noopener noreferrer"
           class="float-right"
+          aria-label="Download curriculum vitae as PDF"
         >
           <i class="fa-solid fa-file-pdf"></i>
         </a>

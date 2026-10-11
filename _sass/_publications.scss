@@ -1,194 +1,283 @@
-/*******************************************************************************
- * Publication and bibliography styles
- ******************************************************************************/
-
-@use "variables" as v;
-
+// Bibliography: title, authors, then venue and year.
 .publications {
-  margin-top: 2rem;
-
-  h1 {
-    color: var(--global-theme-color);
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-
-  h2 {
-    margin-bottom: 1rem;
-
-    span {
-      font-size: 1.5rem;
-    }
-  }
+  margin-top: 1.75rem;
 
   h2.bibliography {
-    color: var(--global-divider-color);
-    border-top: 1px solid var(--global-divider-color);
-    padding-top: 1rem;
-    margin-top: 2rem;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.2rem 0 0.2rem;
+    padding: 0;
+    color: var(--global-theme-color);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-align: left;
+
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--global-divider-color);
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   ol.bibliography {
+    counter-reset: paper;
     list-style: none;
     padding: 0;
-    margin-top: 0;
+    margin: 0;
 
-    li {
-      margin-bottom: 1rem;
+    > li {
+      position: relative;
+      counter-increment: paper;
+      padding: 1.45rem 0 1.45rem 2.8rem;
+      margin: 0;
+      border-bottom: 1px solid var(--global-divider-color);
 
-      .preview {
-        display: inline-block;
+      &::before {
+        content: counter(paper, decimal-leading-zero);
+        position: absolute;
+        top: 1.65rem;
+        left: 0;
+        width: 1.65rem;
+        padding: 0.12rem 0;
+        border-radius: 4px;
+        background: var(--academic-soft);
+        color: var(--global-theme-color);
+        text-align: center;
+        font-size: 0.65rem;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
       }
 
-      .abbr {
-        margin-bottom: 0.5rem;
-
-        abbr {
-          display: inline-block;
-          background-color: var(--global-theme-color);
-          margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
-
-          a {
-            color: white;
-
-            &:hover {
-              text-decoration: none;
-            }
-          }
-        }
-
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
-        }
-      }
-
-      .title {
-        font-size: 1.2rem;
-        font-weight: bolder;
-        line-height: 1.3;
-      }
-
-      .author {
-        font-size: 0.85rem;
-
-        a {
-          border-bottom: 1px dashed var(--global-theme-color);
-
-          &:hover {
-            border-bottom-style: solid;
-            text-decoration: none;
-          }
-        }
-
-        > em {
-          border-bottom: 1px solid;
-          font-style: normal;
-        }
-
-        > span.more-authors {
-          color: var(--global-text-color-light);
-          border-bottom: 1px dashed var(--global-text-color-light);
-          cursor: pointer;
-
-          &:hover {
-            color: var(--global-text-color);
-            border-bottom: 1px dashed var(--global-text-color);
-          }
-        }
-      }
-
-      .periodical {
-        font-size: 0.85rem;
-      }
-
-      .links {
-        font-size: 0.85rem;
-
-        a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 0.25rem;
-          padding-bottom: 0.25rem;
-          margin-left: 0;
-
-          &:hover {
-            color: var(--global-theme-color);
-            border-color: var(--global-theme-color);
-          }
-        }
-        a.award.btn {
-          border-color: var(--global-highlight-color);
-        }
-      }
-
-      .badges {
-        padding-bottom: 0.5rem;
-        span {
-          display: inline-block;
-          color: v.$black-color;
-          height: 100%;
-          padding-right: 0.5rem;
-          vertical-align: middle;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-
-      .hidden {
-        font-size: 0.875rem;
-        max-height: 0px;
-        overflow: hidden;
-        text-align: justify;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
-
-        p {
-          line-height: 1.4em;
-          margin: 10px;
-        }
-
-        pre {
-          font-size: 1em;
-          line-height: 1.4em;
-          padding: 10px;
-        }
-      }
-
-      .hidden.open {
-        max-height: 100em;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
-      }
-
-      div.abstract.hidden {
-        border: dashed 1px var(--global-bg-color);
-      }
-
-      div.abstract.hidden.open {
-        border-color: var(--global-text-color);
+      &:last-child {
+        border-bottom: 0;
       }
     }
-    div.award.hidden {
-      border: dashed 1px var(--global-bg-color);
+
+    .title {
+      margin: 0 0 0.5rem;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.55;
+      text-wrap: pretty;
     }
-    div.award.hidden.open {
-      border-color: var(--global-highlight-color);
+
+    .author {
+      color: var(--global-text-color-light);
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.8;
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: var(--academic-line);
+
+        &:hover {
+          color: var(--global-theme-color);
+        }
+      }
+
+      > em {
+        font-style: normal;
+        color: var(--global-text-color);
+
+        strong {
+          font-weight: 600;
+          text-decoration: underline;
+          text-decoration-color: var(--academic-line);
+          text-underline-offset: 3px;
+          text-decoration-thickness: 1px;
+        }
+      }
+
+      .more-authors {
+        color: var(--global-theme-color);
+        cursor: pointer;
+      }
     }
+
+    .paper-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 0.6rem;
+      margin-top: 0.65rem;
+      font-size: 0.73rem;
+      line-height: 1.7;
+    }
+
+    .venue-badge {
+      padding: 0.13rem 0.6rem;
+      border-radius: 4px;
+      color: var(--global-theme-color);
+      background: var(--academic-soft);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .venue-preprint {
+      background: transparent;
+      border: 1px solid var(--academic-line);
+      color: var(--global-text-color-light);
+      font-weight: 400;
+    }
+
+    .paper-year,
+    .paper-note {
+      color: var(--global-text-color-light);
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .paper-note {
+      margin: 0.4rem 0 0;
+    }
+
+    .paper-meta .paper-note {
+      margin: 0;
+    }
+
+    .paper-link {
+      margin-left: 0.2rem;
+      padding: 0.15rem 0.2rem;
+      font-weight: 500;
+
+      span {
+        color: inherit;
+      }
+    }
+
+    .paper-award {
+      color: var(--global-theme-color);
+      font-size: 0.8rem;
+      margin: 0.6rem 0 0;
+    }
+
+    .paper-details {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+
+      summary {
+        width: fit-content;
+        cursor: pointer;
+        color: var(--global-theme-color);
+        font-size: 0.75rem;
+        padding: 0.25rem 0;
+      }
+
+      p,
+      pre {
+        padding: 1rem;
+        margin-top: 0.5rem;
+        background: var(--academic-soft);
+        border-radius: 4px;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+    }
+  }
+}
+
+.about-page article .publications {
+  h2.bibliography {
+    margin-top: 2rem;
+    margin-bottom: 0.2rem;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.75;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ol.bibliography {
+    margin-bottom: 0;
+
+    > li {
+      margin-bottom: 0;
+    }
+
+    .title {
+      margin: 0 0 0.5rem;
+      font-family: inherit;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+  }
+}
+
+.publication-search {
+  max-width: 40rem;
+
+  label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .publication-search-field {
+    position: relative;
+
+    > i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--global-text-color-light);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+  }
+
+  input.bibsearch-form-input {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0.85rem 1rem 0.85rem 2.75rem;
+    border: 1px solid var(--academic-line);
+    border-radius: 6px;
+    background: var(--academic-surface);
+    color: var(--global-text-color);
+    font-family: inherit;
+    font-size: 0.88rem;
+    box-shadow: none;
+
+    &::placeholder {
+      color: var(--global-text-color-light);
+      opacity: 1;
+    }
+  }
+
+  .search-status {
+    min-height: 1.4em;
+    margin: 0.6rem 0 0;
+    color: var(--global-text-color-light);
+    font-size: 0.72rem;
+  }
+
+  .search-empty {
+    padding: 1.25rem;
+    margin-top: 1rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    color: var(--global-text-color-light);
   }
 }
 
@@ -197,16 +286,23 @@
   color: var(--global-theme-color);
 }
 
-// About-page publication list: emphasize paper titles, shrink author lines
-.pub-list {
-  li > p:first-of-type {
-    font-size: 1.1rem;
-    line-height: 1.35;
-    margin-bottom: 0.2rem;
+@media (max-width: 640px) {
+  .publications ol.bibliography > li {
+    padding: 1.25rem 0 1.25rem 2.2rem;
+
+    &::before {
+      top: 1.45rem;
+      width: 1.45rem;
+      font-size: 0.6rem;
+    }
   }
 
-  li > p + p {
-    font-size: 0.85rem;
-    color: var(--global-text-color-light);
+  .publications ol.bibliography .title,
+  .about-page article .publications ol.bibliography .title {
+    font-size: 0.97rem;
+  }
+
+  .publications ol.bibliography .author {
+    font-size: 0.8rem;
   }
 }
