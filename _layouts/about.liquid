@@ -15,6 +15,14 @@ layout: default
           <a href="mailto:{{ site.data.cv.cv.email }}"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email</a>
         {% endif %}
         <a href="{{ '/cv/' | relative_url }}">Curriculum vitae <span aria-hidden="true">↗</span></a>
+        {% if site.data.socials.github_username %}
+          <a href="https://github.com/{{ site.data.socials.github_username | escape }}">GitHub <span aria-hidden="true">↗</span></a>
+        {% endif %}
+        {% if site.data.socials.scholar_userid %}
+          <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid | escape }}"
+            >Google Scholar <span aria-hidden="true">↗</span></a
+          >
+        {% endif %}
         <a href="https://di.postech.ac.kr/di/index.do">DI Lab <span aria-hidden="true">↗</span></a>
       </div>
     </div>
