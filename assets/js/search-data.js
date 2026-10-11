@@ -11,17 +11,10 @@ ninja.data = [{
     },
   },{id: "nav-publications",
           title: "Publications",
-          description: "Research on recommender systems, multimodal learning, and information retrieval.",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
-          },
-        },{id: "nav-cv",
-          title: "CV",
-          description: "Curriculum Vitae of Junyoung Kim.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
           },
         },{id: "post-a-post-with-plotly-js",
         
@@ -469,7 +462,7 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%79%6F%75@%65%78%61%6D%70%6C%65.%63%6F%6D", "_blank");
+          window.open("mailto:%6A%75%6E%79%6F%75%6E%67%6B%69%6D@%70%6F%73%74%65%63%68.%61%63.%6B%72", "_blank");
         },
       },{
         id: 'social-inspire',
@@ -486,11 +479,18 @@ ninja.data = [{
           window.open("/feed.xml", "_blank");
         },
       },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/junyoungkim0823", "_blank");
+        },
+      },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
+          window.open("https://scholar.google.com/citations?user=UxuZobQAAAAJ", "_blank");
         },
       },{
         id: 'social-custom_social',
