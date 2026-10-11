@@ -4,18 +4,12 @@ layout: default
 <div class="post about-page">
   <section class="researcher-hero" aria-labelledby="researcher-name">
     <div class="hero-copy">
-      <p class="eyebrow">{{ page.subtitle }}</p>
       <h1 id="researcher-name" class="post-title">
         {{ site.first_name }}
         {{ site.last_name }}
       </h1>
       <div class="hero-intro">{{ page.intro | markdownify }}</div>
       <div class="hero-research">{{ page.research | markdownify }}</div>
-      <ul class="research-interests" aria-label="Research interests">
-        {% for interest in page.interests %}
-          <li>{{ interest }}</li>
-        {% endfor %}
-      </ul>
       <div class="hero-links">
         {% if site.data.cv.cv.email %}
           <a href="mailto:{{ site.data.cv.cv.email }}"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email</a>
@@ -29,20 +23,9 @@ layout: default
         {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
         {% assign profile_alt = site.first_name | append: ' ' | append: site.last_name %}
         {% include figure.liquid loading="eager" path=profile_image_path class="portrait-image" sizes="(max-width: 640px) 140px, 230px" alt=profile_alt cache_bust=true %}
-        <p>
-          Data Intelligence Lab<br>
-          <span>POSTECH · Pohang, Korea</span>
-        </p>
       </div>
     {% endif %}
   </section>
-
-  <nav class="section-nav" aria-label="On this page">
-    <a href="#publications">Publications</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#honors-heading">Honors & service</a>
-  </nav>
 
   <article>{{ content }}</article>
 </div>
