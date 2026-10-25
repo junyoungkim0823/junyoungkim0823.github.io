@@ -68,3 +68,16 @@ research: >-
     <li><span class="entry-date">2023</span><div><h3>Excellence Award & Special Award</h3><p>Sogang Convergence Competition</p></div></li>
   </ul>
 </section>
+
+<section class="home-section" id="patents" aria-labelledby="patents-heading">
+  <div class="section-heading"><h2 id="patents-heading">Patents</h2></div>
+  <ul class="timeline-list">
+    <li>
+      <div>
+        <h3>Electronic device for personalized recommendation, personalized recommendation method, and non-transitory computer-readable recording medium</h3>
+        <p>Korean patent application No. 10-2026-0205714</p>
+      </div>
+      <p class="entry-date">Filed <time datetime="2026-10-23">Oct 23, 2026</time></p>
+    </li>
+  </ul>
+</section>
